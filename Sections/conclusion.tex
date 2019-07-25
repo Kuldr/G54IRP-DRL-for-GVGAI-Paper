@@ -1,0 +1,26 @@
+Neural networks have shown promise in both general AI problems and the application of video game playing, with nothing to suggest they can't achieve similar high levels of performance on general video game playing.
+Due to the limitations of neural networks GVGP applications were hard to test due to the fixed input and output sizes required.
+Solving these issues allows us to benefit from diverse range of neural network architectures and the benefits of them compared to planning based agents.
+
+\subsection{Neural Network Based Agents}
+The main benefit is agents don't rely on a forward model, something which Levine et al. suggested would be interesting when they proposed a GVGP competition~\cite{GVGP}.
+In complex modern games, a forward model might not be accessible or could be too computationally demanding to use effectively in search based agents due to less time to generate tree nodes.
+Games with imperfect information, or many random/non-deterministic elements (such as opponent players) can also cause problems with using a forward model based approach.
+\par
+Although approaches for modern video game playing exploit access to raw games state~\cite{OpenAIFive, alphastarblog}, it has been shown that CNNs agents can learn to play games from screen observations.
+This brings agents inline with the information that human players have access too, and allows games to be played where you don't have access to the game state such as unmodified commercial titles.
+\par
+A final major benefit of model based agents is that they have a fixed inference time.
+This allows for designers to be confident that an action will be chosen on time, allowing for strict deadlines such as frame times to be adhered too with high confidence.
+If the the computation time changed due to weaker hardware or playing games with a higher framerate, a neural network could perform equally as well so long as it had enough inference time where as a planning based agent would suffer as it couldn't search as deep.
+\par
+As with all neural network based agents, the lack of explainability can be considered a downside.
+At their best neural networks can only be interpreted and its hard to predict how they would perform on new games or changes to current games.
+Another downside is the large file size of models and memory requirements compared to planning agents, limiting their usefulness in situations like opponent AI in a smart phone app.
+
+\subsection{Future Work}
+This paper shows novel methods to allow for cross game training for GVGP learning agents that use a neural network, this allows us to benefit from the quickly growing field of reinforcement learning for GVGP.
+It is clear that training methods still need to be improved if agents are going to perform as well as their planning based counter parts.
+There is room for exploring more complex network architectures such as recurrent neural networks or giving the agent a series of previous frames to show change in the state.
+Methods for expanding the agents playable games through transfer learning could allow for more general game playing.
+Procedural content generation could help alleviate the overfitting of the training levels by providing a wide distribution of levels to train in, something that is been initially investigate by Justesen et al.~\cite{PCG}.

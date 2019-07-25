@@ -1,0 +1,66 @@
+\subsection{Video Game Playing}
+\subsubsection{Atari 2600} \label{sssec:Atari2600}
+As the Atari 2600 was one of the first commercially available home consoles made, with a wide variety of games to choose from, it made sense as a logical start for AI video game playing.
+Mnih et al. used the Atari Learning Environment (ALE) to show that a nueral network could be trained to play video games~\cite{DeepAtari} using raw screen input data.
+This was done through a combination of convultional neural networks and reinforcement learning.
+\subsubsection{DotA~2}
+A team at OpenAI created OpenAI Five, a series of 5 neural networks based agents that trained through reinforcement learning to play as a team in DotA~2~\cite{OpenAIFive}, a popular modern Esports game.
+This method has shown success in creating a team of independent agents that can play a complex modern video game at a professional level.
+The agents perceive the raw game state via a built in bot API for DotA~2 and use a shallow LSTM network to decide what action to perform, this allows the problem to stay tractable while working on such a large problem.
+\par
+Most recently the team of agents played against 5 professional players and lost~\cite{OpenAIInternational}.
+Despite the loss the team of agents managed to perform well against the professional players showing significant progress in the field of video game playing.
+
+\subsubsection{Starcraft II}
+Most recently Vinyals et al. have used a combination of supervised and reinforcement learning to create a StarCraft II agent that can beat professional players in a professional match setting~\cite{alphastarblog}
+The agent perceived the raw game state and used a deep neural network to decide a series of actions to perform.
+\par
+The agent began by learning through supervised imitation learning on a dataset of anonymised human games.
+This agent then seeded a multi agent reinforcement learning process where agents competed against each other and learned from their experience.
+\par
+Initial versions of alphaStar played `without having to move the camera', effectively giving it more information visible to the agent than a human player would have access too by having larger perspective covering the entire map at once.
+A version was refined and trained using the camera interface (analogous to what a human player would see), this version went up against the same professional player and lost an exhibition match although Vinyals et al. `hope to evaluate a fully trained instance of the camera interface in the near future'~\cite{alphastarblog}.
+\par
+Alongside the camera limitation alphaStar had other limitations, such as only being able to play with and against one out the three available races in that game.
+% \begin{itemize}
+%     \item \hl{Contention with the ability of alphaStar
+%     "These results suggest that AlphaStar’s success against MaNa and TLO was in fact due to superior macro and micro-strategic decision-making, rather than superior click-rate, faster reaction times, or the raw interface."}
+% \end{itemize}
+
+\subsection{General Video Game Playing (GVGP)}
+As game playing has been proven to be a robust test bed for AI methods, general game playing has been seen a suitable test bed for artificial general intelligence (AGI).
+\subsubsection{GGP Competition}
+The goal of general game playing (GGP) is to design a AI method that is able to play multiple games successfully.
+This area has been explored for simple board games through the GGP competition~\cite{GGP}.
+By incorporating a standard representation and benchmarking system, the GGP competition has allowed for detailed comparisons of agents in a scientific manor.
+\par
+The GGP framework was built upon a Game Description Language (GDL), a domain specific language built to help define games in the GGP framework.
+GDL has allowed variations of games, and new games to exist along side well known games helping the GGP to be truely general and not restricted to a small subset of games.
+\par
+A popular approach to the GGP competition was using efficient tree search methods to decide the next move to take, which quickly was dominated by Monte-Carlo Tree Search (MCTS) a stochastic tree search algorithm.
+Finnsson and Bj{\"o}rnsson spoke about the successes of MCTS in the GGP competition~\cite{MCTSGGP}.
+
+\subsubsection{GVGP and ALE}
+While GGP focuses on playing board games, the idea of general game playing has been adapted to video games too - referred to as General Video Game Playing (GVGP)~\cite{GVGP}.
+One of the first attempts at creating a video game based benchmark comparable to GGP was proposed in the Atari Learning Environment (ALE)~\cite{ALE}.
+ALE used commercially available Atari 2600 games with emulation to provide the benchmark.
+This is the same framework as used by Mnih el al. discussed in Section~\ref{sssec:Atari2600}.
+While Mnih et al. did not create a GVGP AI, it is interesting to note that, the method used was shown to work on several games in the ALE without changes to network architecture or the learning algorithm hyper-parameters.
+
+\subsubsection{GVGAI}
+Another benchmark framework, and the focus of this paper, was created with the General Video Game AI (GVGAI) framework and accompanying competition.
+The idea of a GGP style, video game based benchmark was proposed by Levine et al. suggesting a variety of different areas of interest such a framework could explore~\cite{GVGP}.
+The resulting GVGAI framework more closely resembled the GGP framework by using a Video Game Description Language (VGDL) created by Schaul~\cite{VGDL} to allow for new games and levels to be created frequently.
+The use of the VGDL means that new games and levels can be created for each round of the competition, ensuring that certain knowledge (such as the validation games/levels) can be unknown to the agent.
+\par
+The first competition was held in 2014 at the IEEE Conference on Computational Intelligence and Games in 2014, holding a single track for planning agents.
+These agents were given the current game state, available actions, and a forward model allowing them to plan out the best possible next move to ultimately win the game.
+The framework and the planning track was described by Perez-Liebana et al. in their summary of this iteration of the competition~\cite{GVGAI14}.
+
+\subsubsection{GVGAI - Learning Track}
+Since this first iteration of the GVGAI competition in 2014, several further tracks have been added with the learning track being of interest to this paper.
+The learning track allows agents to train in a set number of levels and games beforehand but they no longer have access to the forward model.
+Another addition is the ability for the agent to take its observation in the form of the currently rendered frame at that time step.
+\par
+To bring the GVGAI learning track in line with other reinforcement learning environments it was recently interfaced with the OpenAI Gym framework~\cite{OpenAIGym} to create the GVGAI Gym framework~\cite{GVGAIGym}.
+This allows for a standard interface between the benchmark games and the learning algorithms, compared to other RL tasks.
